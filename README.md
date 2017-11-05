@@ -30,7 +30,8 @@ DEPENDENCY INJECTION
     
 HOW TO RUN TEST CASES:
 1.  To run the Runner Class(manually from IDE), include the following to the VM options in edit configurations: -Dguice.injector-source=configuration.DependencyInjection
-
 2. To run the feature file, it automatically inserts the option in edit configuration.
-
 3. COMMAND LINE: mvn clean -Dguice.injector-source=configuration.DependencyInjection test
+
+REPORTS:
+1. After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in target folder.
