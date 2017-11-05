@@ -4,7 +4,7 @@ PRE-REQUISITES
 3. Put the feature files under test/resources.
 4. Need to have Selenium, Cucumber(cucumber-jvm,cucumber-java,cucumber-guice,cucumber-junit,),
  Dependency Injection(guice) and Unit Test Framework Dependencies in pom.xml
-5. 
+5. Hooks's methods should be public and not private or else they wont be called.
  
 FRAMEWORK STRUCTURE
 1. CONFIGURATION: It contains the DependencyInjection Class which extends AbstractModule of guice and bibds the 
