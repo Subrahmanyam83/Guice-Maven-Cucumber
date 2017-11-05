@@ -12,8 +12,7 @@ public class GooglePage {
     @Inject
     private WebDriver driver;
 
-    @Named("firefox")
-    @Inject
+    @Inject @Named("firefox")
     private WebDriver driver1;
 
     /*Use either this or the above one*/

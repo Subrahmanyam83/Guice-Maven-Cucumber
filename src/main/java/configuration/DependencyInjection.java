@@ -19,9 +19,10 @@ public class DependencyInjection extends AbstractModule implements InjectorSourc
         bind(WebDriver.class).annotatedWith(Names.named("firefox")).toProvider(FirefoxDriverFactory.class).in(ScenarioScoped.class);
     }
 
-    /*This is required to make guice understand  or apply the scope for the cucumber scenarios.
+    /*
     * If not given it creates a default injector whose scope is not set and the driver is created everytime driver is called,
-    * because it will call the get() of DependencyInjection class everytime. */
+    * because it will call the get() of DependencyInjection class everytime.
+    */
     public Injector getInjector() {
         return Guice.createInjector(this, CucumberModules.SCENARIO);
     }

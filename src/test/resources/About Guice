@@ -1,0 +1,13 @@
+Reference: http://www.baeldung.com/guice
+
+1. The Basic Entry point of Guice is the Injector and you say for which all Modules you want to create Injectors, hence you send a list
+of Modules to the createInjector method.
+
+2.With Bindings you tell how Guice is going to inject dependencies in the class.
+
+3. A binding is defined in the module class - AbstractModule. The implementation says which implementation to provide when
+Webdriver variable is created and used(in our case). Module class has the implementation of the bindings.
+
+4.  Guice.createInjector() takes your Modules, and returns a new Injector
+        * instance. Most applications will call this method exactly once, in their
+        * main() method.
