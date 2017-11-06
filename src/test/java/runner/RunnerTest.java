@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
  * Created by Subrahmanyam on 1/Nov/2017
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:features/",
+@CucumberOptions(features = "classpath:features/", //You can use src/test/resources/features
                  glue = {"steps","hooks"},
                  format = {"pretty", "html:target/cucumber" })
 public class RunnerTest {
