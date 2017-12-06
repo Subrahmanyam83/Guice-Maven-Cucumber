@@ -1,6 +1,7 @@
 package pages;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.openqa.selenium.WebDriver;
 import javax.inject.Named;
 
@@ -10,20 +11,21 @@ import javax.inject.Named;
 public class GooglePage {
 
     @Inject
-    private WebDriver driver;
+    private Provider<WebDriver> driver;
 
     @Inject @Named("firefox")
-    private WebDriver driver1;
+    private Provider<WebDriver> driver1;
 
-    /*Use either this or the above one*/
+    /*If we use pure Webdriver implementation then it will instantiate a driver even if the tests
+    * are not calling them. So call Provider<WebDriver> instead.*/
     /*@Inject
-    private Provider<WebDriver> driver;*/
+    private WebDriver driver;*/
 
     public void navigate() {
-        driver.navigate().to("http://www.google.com");
-        driver.quit();
+        driver.get().navigate().to("http://www.google.com");
+        driver.get().quit();
 
-        driver1.navigate().to("http://www.google.com");
-        driver1.quit();
+        driver1.get().navigate().to("http://www.google.com");
+        driver1.get().quit();
     }
 }
