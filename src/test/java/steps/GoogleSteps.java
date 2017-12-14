@@ -1,7 +1,6 @@
 package steps;
 
 import com.google.inject.Inject;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import pages.GooglePage;
 
