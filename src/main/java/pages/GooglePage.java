@@ -25,7 +25,9 @@ public class GooglePage {
         driver.get().navigate().to("http://www.google.com");
         driver.get().quit();
 
-        driver1.get().navigate().to("http://www.google.com");
-        driver1.get().quit();
+        /*Uncomment this when firefox browser is degraded or use Gecko Driver for latest FF version*/
+
+        //driver1.get().navigate().to("http://www.google.com");
+        //driver1.get().quit();
     }
 }

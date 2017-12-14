@@ -10,6 +10,8 @@
 
     <build>
         <plugins>
+
+            <!--SUREFIRE PLUGIN -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -18,6 +20,9 @@
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
+                    <systemPropertyVariables>
+                        <guice.injector-source>configuration.DependencyInjection</guice.injector-source>
+                    </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>
@@ -37,8 +42,37 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--CUCUMBER-MAVEN_PLUGIN-->
+            <plugin>
+                <groupId>eu.evops.maven.plugins</groupId>
+                <artifactId>cucumber-runner-maven-plugin</artifactId>
+                <version>1.15</version>
+                <configuration>
+                    <features>
+                        <feature>classpath:${features}</feature>
+                    </features>
+                    <gluePaths>
+                        <gluePath>steps</gluePath>
+                    </gluePaths>
+                    <plugins>
+                        <plugin>html:</plugin>
+                        <plugin>json:</plugin>
+                        <plugin>junit:</plugin>
+                        <plugin>pretty</plugin>
+                    </plugins>
+                    <combineReports>true</combineReports>
+                    <threadCount>${threads}</threadCount>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
+    <properties>
+        <features>features</features>
+        <threads>4</threads>
+    </properties>
 
     <dependencies>
 
