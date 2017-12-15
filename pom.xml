@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>test-guice-selenium</groupId>
     <artifactId>test-guice-selenium</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
         <plugins>
-
             <!--SUREFIRE PLUGIN -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,17 +63,16 @@
                     <threadCount>${threads}</threadCount>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
     <properties>
         <features>features</features>
         <threads>4</threads>
+        <sonar.exclusions>pom.xml</sonar.exclusions>
     </properties>
 
     <dependencies>
-
         <!--UNIT TEST DEPENDENCY-->
         <dependency>
             <groupId>junit</groupId>

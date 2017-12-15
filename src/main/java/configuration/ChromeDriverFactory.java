@@ -9,10 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class ChromeDriverFactory implements Provider<WebDriver> {
 
-    private final String driverPath = "/usr/local/bin/";
+    private static final String DRIVERPATH = "/usr/local/bin/";
 
     public WebDriver get() {
-        System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+        System.setProperty("webdriver.chrome.driver", DRIVERPATH + "chromedriver");
         return new ChromeDriver();
     }
 }

@@ -1,6 +1,7 @@
 package runner;
 
 import org.junit.Test;
+import java.util.logging.Logger;
 import static junit.framework.TestCase.assertTrue;
 
 /**
@@ -8,9 +9,11 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class IntegrationTest {
 
+    private static final Logger LOG= Logger.getLogger(IntegrationTest.class.getName());
+
     @Test
     public void firstTest(){
-        System.out.println("First Test");
+        LOG.info("First Test");
         assertTrue(1>0);
     }
 }
