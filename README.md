@@ -47,7 +47,8 @@ configuration of the maven surefire plugin)
 
 #### SONAR Analysis
 - Make sure the follwoing settings are in the settings.xml file in .m2 folder
-```<pluginGroups>
+```
+   <pluginGroups>
          <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
    </pluginGroups>
 
