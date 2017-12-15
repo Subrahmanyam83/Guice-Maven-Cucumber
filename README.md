@@ -35,6 +35,14 @@ Webdriver Class with the custom class we created(ChromeDriverFactory/FirefoxDriv
 - COMMAND LINE: ```mvn clean -Dguice.injector-source=configuration.DependencyInjection test``` or just ```mvn test```(as this has been added to the System Variable Property to the 
 configuration of the maven surefire plugin)
 
+#### Run test cases by passing cucumber options from CMD
+
+#####Only Run a Scenarios with Tags:
+```mvn -Dguice.injector-source=configuration.DependencyInjection -Dcucumber.options="--tags @subu" test```
+
+#####Only Run a FEATURE:
+```mvn -Dguice.injector-source=configuration.DependencyInjection -Dcucumber.options="src/test/resources/features/third-feature.feature" test```
+
 #### Report Generation:
 - After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in ```target/cucumber/index.html``` folder.
 
