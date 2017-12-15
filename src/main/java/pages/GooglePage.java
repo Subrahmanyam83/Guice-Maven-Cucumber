@@ -16,18 +16,15 @@ public class GooglePage {
     @Inject @Named("firefox")
     private Provider<WebDriver> driver1;
 
-    /*If we use pure Webdriver implementation then it will instantiate a driver even if the tests
-    * are not calling them. So call Provider<WebDriver> instead.*/
-    /*@Inject
-    private WebDriver driver;*/
-
     public void navigate() {
         driver.get().navigate().to("http://www.google.com");
         driver.get().quit();
+    }
 
-        /*Uncomment this when firefox browser is degraded or use Gecko Driver for latest FF version*/
+    public void useGuiceProvidedFFInstance(){
+        /*Use this when firefox browser is degraded or use Gecko Driver for latest FF version*/
 
-        //driver1.get().navigate().to("http://www.google.com");
-        //driver1.get().quit();
+        driver1.get().navigate().to("http://www.google.com");
+        driver1.get().quit();
     }
 }
