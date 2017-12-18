@@ -1,7 +1,7 @@
 ### MAVEN-CUCUMBER-GUICE PROJECT
 
 #### Pre-Requisites
-1. Make sure that the Runner class is under test/java folder and ends with Test- that is the nomenclature Cucumber follows and understands to execute the Runner Class.
+1. Make sure that the Runner class is under test/java folder and ends with Test(only if you want to run the Runner Class)- that is the nomenclature Cucumber follows and understands to execute the Runner Class.
 2. In the RunnerClass, glue path should be 'steps' - which is relative to the src/main/java folder. Do not specify the path as 'src/main/java/steps'.
 3. Put the feature files under test/resources or src/resources - it does not matter.
 4. Need to have Selenium, Cucumber(cucumber-guice,cucumber-junit),
@@ -47,10 +47,9 @@ configuration of the maven surefire plugin)
 - After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in ```target/cucumber/index.html``` folder.
 
 #### CUCUMBER-MAVEN-PLUGIN: Usage to run parallelly.
-- Steps should be in the ```src/test/java``` (classpath) folder.
 - Add cucumber-maven-plugin in pom.xml with default configuration.
 - Either you can add configs there or you can send it through command line:: Make sure you have the dependency Injector source class as System Property.
-    eg: ``` mvn cucumber-runner:run ``` (specifying all the features and include tags in the configuration of the cucumber plugin in pom.xml) or
+    eg: ``` mvn -Dguice.injector-source=configuration.DependencyInjection cucumber-runner:run ``` (specifying all the features and include tags in the configuration of the cucumber plugin in pom.xml) or
     ``` mvn -DcucumberRunner.features=src/test/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run -X```
 
 #### SONAR Analysis
@@ -76,5 +75,15 @@ configuration of the maven surefire plugin)
 
 - Run the following command in the project root folder: 
 ```mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.issuesReport.html.enable=true```
+
+#### Usage of Maven Shade Plugin
+mvn clean package shade:shade
+
+#### Run the Test Cases using the JAR Project and Dependent JARS
+1. Create an assembly plugin in pom.xml
+2. Run the command: ```mvn clean package -DskipTests```
+3. In target folder it will create 3 jars - One for Project src, one for test and resource folders, and one for dependencies.
+4. Copy these 3 JARS anywhere and run the following command.
+```java -cp "dependencies.jar:project-tests.jar:project.jar" cucumber.api.cli.Main --glue "classpath:steps/" --glue "classpath:hooks" classpath:features/```
 
 

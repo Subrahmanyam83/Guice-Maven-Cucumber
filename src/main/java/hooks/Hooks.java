@@ -13,11 +13,11 @@ public class Hooks {
 
     @Before
     public void beforeMethod() {
-        LOG.fine("Calling Before Hook");
+        LOG.info("\n ********** Calling Before Hook");
     }
 
     @After
     public void afterMethod() {
-        LOG.fine("Calling After Hook");
+        LOG.info("\n ********** Calling After Hook");
     }
 }
