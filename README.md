@@ -49,7 +49,8 @@ configuration of the maven surefire plugin)
 #### CUCUMBER-MAVEN-PLUGIN: Usage to run parallelly.
 - Add cucumber-maven-plugin in pom.xml with default configuration.
 - Either you can add configs there or you can send it through command line:: Make sure you have the dependency Injector source class as System Property.
-    eg: ``` mvn -Dguice.injector-source=configuration.DependencyInjection cucumber-runner:run ``` (specifying all the features and include tags in the configuration of the cucumber plugin in pom.xml) or
+    eg: ``` mvn cucumber-runner:run ``` (-Dguice.injector-source=configuration.DependencyInjection option is specified by having a cucumber.properties in 
+    src/main/resources folder, which is read by Guice for its Dependency Injection Class. Rest of the parameters like the features and include tags can be specified in the configuration of the cucumber plugin in pom.xml) or
     ``` mvn -DcucumberRunner.features=src/test/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run -X```
 
 #### SONAR Analysis
@@ -79,7 +80,7 @@ configuration of the maven surefire plugin)
 #### Usage of Maven Shade Plugin
 mvn clean package shade:shade
 
-#### Run the Test Cases using the JAR Project and Dependent JARS
+#### Run the Test Cases using the Project JAR and Dependent JARS
 1. Create an assembly plugin in pom.xml
 2. Run the command: ```mvn clean package -DskipTests```
 3. In target folder it will create 3 jars - One for Project src, one for test and resource folders, and one for dependencies.

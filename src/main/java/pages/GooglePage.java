@@ -1,7 +1,9 @@
 package pages;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import javax.inject.Named;
 import java.util.logging.Logger;
 
 /**
@@ -11,13 +13,22 @@ public class GooglePage {
 
     Logger LOG = Logger.getLogger(GooglePage.class.getName());
 
-    public void navigate() {
-        System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
-        WebDriver driver= new ChromeDriver();
+    @Inject
+    private Provider<WebDriver> driver;
 
+    @Inject @Named("firefox")
+    private Provider<WebDriver> driver1;
+
+    public void navigate() {
         LOG.info("\n ********** Opening ad Navigating to the Google PAGE");
-        driver.navigate().to("http://www.google.com");
-        driver.quit();
+        driver.get().navigate().to("http://www.google.com");
+        driver.get().quit();
         LOG.info("\n ********** Quitting the Driver");
+    }
+
+    public void useGuiceProvidedFFInstance(){
+        /*Use this when firefox browser is degraded or use Gecko Driver for latest FF version*/
+        driver1.get().navigate().to("http://www.google.com");
+        driver1.get().quit();
     }
 }
