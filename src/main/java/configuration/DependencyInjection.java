@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class DependencyInjection extends AbstractModule implements InjectorSource {
 
-    protected void configure() {
+    public void configure() {
         bind(WebDriver.class).toProvider(ChromeDriverFactory.class).in(ScenarioScoped.class);
         bind(WebDriver.class).annotatedWith(Names.named("firefox")).toProvider(FirefoxDriverFactory.class).in(ScenarioScoped.class);
     }
