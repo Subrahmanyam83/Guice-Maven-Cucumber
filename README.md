@@ -33,30 +33,32 @@ Webdriver Class with the custom class we created(ChromeDriverFactory/FirefoxDriv
 (You have to only give this configuration when you have explicitly created an Injector class -in this case it is ''' DependencyInjection ''')
 - To run the feature file, it automatically inserts the option in edit configuration.
 - COMMAND LINE: ```mvn clean -Dguice.injector-source=configuration.DependencyInjection test``` or just ```mvn test```(as this has been added to the System Variable Property to the 
-configuration of the maven surefire plugin)
+configuration of the maven surefire plugin or it is already mentioned in the src/main/resources/cucumber.properties)
 
 #### Run test cases by passing cucumber options from CMD
 
-#####Only Run a Scenarios with Tags:
-```mvn -Dguice.injector-source=configuration.DependencyInjection -Dcucumber.options="--tags @subu" test```
+##### Only Run a Scenarios with Tags:
+```mvn -Dcucumber.options="--tags @subu" test```
 
-#####Only Run a FEATURE:
-```mvn -Dguice.injector-source=configuration.DependencyInjection -Dcucumber.options="src/test/resources/features/third-feature.feature" test```
+##### Only Run a FEATURE:
+```mvn -Dcucumber.options="src/test/resources/features/third-feature.feature" test```
 
 #### Report Generation:
 - After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in ```target/cucumber/index.html``` folder.
+- To get the Cucumber Masterthought Reports use the following command and the run the java/hooks/ReportHooks test method to generate reports:
+```mvn -Dcucumber.options="--glue 'hooks' --glue 'steps' --tags @subu --plugin 'html:reports/html' --plugin 'junit:reports/report.xml' --plugin 'json:reports/report.json'" test```
 
 #### CUCUMBER-MAVEN-PLUGIN: Usage to run parallelly.
 - Add cucumber-maven-plugin in pom.xml with default configuration.
 - Either you can add configs there or you can send it through command line:: Make sure you have the dependency Injector source class as System Property.
     eg: ``` mvn cucumber-runner:run ``` (-Dguice.injector-source=configuration.DependencyInjection option is specified by having a cucumber.properties in 
-    src/main/resources folder, which is read by Guice for its Dependency Injection Class. Rest of the parameters like the features and include tags can be specified in the configuration of the cucumber plugin in pom.xml) or
-    ``` mvn -DcucumberRunner.features=src/test/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run -X```
+    src/main/resources folder, which is read by Guice for its Dependency Injection Class. Rest of the parameters like the features and include tags can be specified in the configuration of the cucumber plugin in pom.xml) or 
+    as a command line parameters.
+    ``` mvn -DcucumberRunner.features=src/main/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run```
 
 #### SONAR Analysis
 - Make sure the follwoing settings are in the settings.xml file in .m2 folder
-```
-   <pluginGroups>
+```<pluginGroups>
          <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
    </pluginGroups>
 
@@ -77,14 +79,11 @@ configuration of the maven surefire plugin)
 - Run the following command in the project root folder: 
 ```mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.issuesReport.html.enable=true```
 
-#### Usage of Maven Shade Plugin
-mvn clean package shade:shade
-
 #### Run the Test Cases using the Project JAR and Dependent JARS
 1. Create an assembly plugin in pom.xml
-2. Run the command: ```mvn clean package -DskipTests```
-3. In target folder it will create 3 jars - One for Project src, one for test and resource folders, and one for dependencies.
-4. Copy these 3 JARS anywhere and run the following command.
-```java -cp "dependencies.jar:project-tests.jar:project.jar" cucumber.api.cli.Main --glue "classpath:steps/" --glue "classpath:hooks" classpath:features/```
-
+2. Run the command: ```mvn clean test assembly:single -DskipTests```
+3. In target folder it will create a jar file - ```test-guice-selenium-1.0-jar.jar```
+4. Copy this JAR anywhere and run the following command.
+```java -cp "test-guice-selenium-1.0-jar.jar" cucumber.api.cli.Main --glue "classpath:steps/" --glue "classpath:hooks" --plugin "html:reports/cucumber-reports/html" --plugin "junit:reports/cucumber-reports/report.xml" --plugin "json:reports/cucumber-reports/report.json" classpath:features/```
+5. This will execute the test cases and create a folder where the jar is present with reports folder. We can use those JSON reports to create Masterthought Cucumber Reports.
 

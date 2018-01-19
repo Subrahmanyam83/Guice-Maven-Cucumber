@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features/", //You can use src/test/resources/features
-                 glue = {"steps","hooks"},
-                 format = {"pretty", "html:target/cucumber" })
+                 //format = {"pretty", "html:target/cucumber" },
+                 glue = {"steps","hooks"})
 public class RunnerTest {
 
 }
