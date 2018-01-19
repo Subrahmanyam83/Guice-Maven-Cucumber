@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>test-guice-selenium</groupId>
     <artifactId>test-guice-selenium</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <build>
         <plugins>
@@ -20,6 +20,7 @@
                     </excludes>
                     <systemPropertyVariables>
                         <guice.injector-source>configuration.DependencyInjection</guice.injector-source>
+                        <org.apache.logging.log4j.simplelog.StatusLogger.level>TRACE</org.apache.logging.log4j.simplelog.StatusLogger.level>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -61,6 +62,23 @@
                     </plugins>
                     <combineReports>true</combineReports>
                     <threadCount>${threads}</threadCount>
+                    <scenarioGeneratorTimeout>30</scenarioGeneratorTimeout>
+                </configuration>
+            </plugin>
+
+            <!--ASSEMBLY PLUGIN TO BUNDLE SRC, TEST AND DEPENDENCIES TOGETHER-->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>cucumber.api.cli.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptors>
+                        <descriptor>package.xml</descriptor>
+                    </descriptors>
                 </configuration>
             </plugin>
         </plugins>
@@ -105,6 +123,13 @@
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>4.0</version>
+        </dependency>
+
+        <!--MASTERTHOUGHT :: FOR REPORTING-->
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
 </project>
