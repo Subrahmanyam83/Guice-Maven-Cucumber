@@ -53,6 +53,7 @@
                     </features>
                     <gluePaths>
                         <gluePath>steps</gluePath>
+                        <gluePath>hooks</gluePath>
                     </gluePaths>
                     <plugins>
                         <plugin>html:</plugin>
