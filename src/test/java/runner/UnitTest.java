@@ -1,11 +1,7 @@
 package runner;
 
 import org.junit.Test;
-
-import java.util.Formatter;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import static junit.framework.TestCase.assertTrue;
 
 /**
