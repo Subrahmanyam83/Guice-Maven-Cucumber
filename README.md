@@ -57,7 +57,7 @@ configuration of the maven surefire plugin or it is already mentioned in the src
     ``` mvn -DcucumberRunner.features=src/main/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run```
 
 #### SONAR Analysis
-- Make sure the follwoing settings are in the settings.xml file in .m2 folder
+- Make sure the following settings are in the settings.xml file in .m2 folder
 ```<pluginGroups>
          <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
    </pluginGroups>
