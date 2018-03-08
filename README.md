@@ -47,7 +47,7 @@ configuration of the maven surefire plugin or it is already mentioned in the src
 - After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in ```target/cucumber/index.html``` folder.
 - To get the Cucumber Masterthought Reports use the following command and the run the java/hooks/ReportHooks test method to generate reports:
 ```mvn -Dcucumber.options="--glue 'hooks' --glue 'steps' --tags @subu --plugin 'html:reports/html' --plugin 'junit:reports/report.xml' --plugin 'json:reports/report.json'" test```
-
+- To get the normal Junit Reports from Cucumber, yu need to have 'format = {"pretty", "html:target/cucumber" },' in the Runner File
 #### CUCUMBER-MAVEN-PLUGIN: Usage to run parallelly.
 - Add cucumber-maven-plugin in pom.xml with default configuration.
 - Either you can add configs there or you can send it through command line:: Make sure you have the dependency Injector source class as System Property.
