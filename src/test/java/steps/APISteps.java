@@ -2,9 +2,10 @@ package steps;
 
 import cucumber.api.java.en.Given;
 import utilities.PropertyMap;
+
 import java.util.Properties;
+
 import static com.jayway.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.core.StringContains.containsString;
 
@@ -42,7 +43,7 @@ public class APISteps {
         if(pageName.equals(firstText)){
             given().when().get(baURL).then().time(lessThan(1000L));
         }else if(pageName.equals(secondText)){
-            given().when().get(iagURL).then().time(greaterThan(3000L));
+            given().when().get(iagURL).then().time(lessThan(3000L));
         }
     }
 }

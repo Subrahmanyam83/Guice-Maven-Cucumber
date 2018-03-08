@@ -111,12 +111,12 @@
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-guice</artifactId>
-            <version>1.2.4</version>
+            <version>1.2.5</version>
         </dependency>
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>1.2.4</version>
+            <version>1.2.5</version>
         </dependency>
 
         <!--GUICE DEPENDENCY-->
