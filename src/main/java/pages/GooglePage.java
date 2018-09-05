@@ -19,9 +19,10 @@ public class GooglePage {
     @Inject @Named("firefox")
     private Provider<WebDriver> driver1;
 
-    public void navigate() {
+    public void navigate() throws InterruptedException {
         LOG.info("\n ********** Opening ad Navigating to the Google PAGE");
         driver.get().navigate().to("http://www.google.com");
+        Thread.sleep(10000L);
         driver.get().quit();
         LOG.info("\n ********** Quitting the Driver");
     }
