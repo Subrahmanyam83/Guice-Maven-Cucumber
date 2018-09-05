@@ -13,7 +13,7 @@ public class GoogleSteps {
     GooglePage gpage;
 
     @Given("I load a google page and quit")
-    public void navigateToDPResponsivePage() {
+    public void navigateToDPResponsivePage() throws InterruptedException {
         gpage.navigate();
     }
 }

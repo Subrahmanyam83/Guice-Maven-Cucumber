@@ -87,3 +87,5 @@ configuration of the maven surefire plugin or it is already mentioned in the src
 ```java -cp "test-guice-selenium-1.0-jar.jar" cucumber.api.cli.Main --glue "classpath:steps/" --glue "classpath:hooks" --plugin "html:reports/cucumber-reports/html" --plugin "junit:reports/cucumber-reports/report.xml" --plugin "json:reports/cucumber-reports/report.json" classpath:features/```
 5. This will execute the test cases and create a folder where the jar is present with reports folder. We can use those JSON reports to create Masterthought Cucumber Reports.
 
+## REFERENCE
+Cucumber Maven PLugin: https://github.com/eu-evops/cucumber-runner-maven-plugin
