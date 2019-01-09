@@ -1,0 +1,6 @@
+# project files
+.eclipse
+
+# Intellij
+*.idea/
+*.iml
