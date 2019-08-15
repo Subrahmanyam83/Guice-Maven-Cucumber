@@ -16,4 +16,9 @@ public class GoogleSteps {
     public void navigateToDPResponsivePage() throws InterruptedException {
         gpage.navigate();
     }
+
+    @Given("I load a google page and perform negative testing")
+    public void performNegatibveTesting() throws InterruptedException {
+        gpage.navigateAndPerformNegativeTest();
+    }
 }

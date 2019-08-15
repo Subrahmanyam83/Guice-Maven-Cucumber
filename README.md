@@ -47,7 +47,7 @@ configuration of the maven surefire plugin or it is already mentioned in the src
 - After running the test cases using either of the 3 cases - feature file, runner class or command line, the Reports will be generated in ```target/cucumber/index.html``` folder.
 - To get the Cucumber Masterthought Reports use the following command and the run the java/hooks/ReportHooks test method to generate reports:
 ```mvn -Dcucumber.options="--glue 'hooks' --glue 'steps' --tags @subu --plugin 'html:reports/html' --plugin 'junit:reports/report.xml' --plugin 'json:reports/report.json'" test```
-- To get the normal Junit Reports from Cucumber, yu need to have 'format = {"pretty", "html:target/cucumber" },' in the Runner File
+- To get the normal Junit Reports from Cucumber, you need to have 'format = {"pretty", "html:target/cucumber" },' in the Runner File
 #### CUCUMBER-MAVEN-PLUGIN: Usage to run parallelly.
 - Add cucumber-maven-plugin in pom.xml with default configuration.
 - Either you can add configs there or you can send it through command line:: Make sure you have the dependency Injector source class as System Property.
@@ -55,6 +55,7 @@ configuration of the maven surefire plugin or it is already mentioned in the src
     src/main/resources folder, which is read by Guice for its Dependency Injection Class. Rest of the parameters like the features and include tags can be specified in the configuration of the cucumber plugin in pom.xml) or 
     as a command line parameters.
     ``` mvn -DcucumberRunner.features=src/main/resources/features -DcucumberRunner.includeTags=@subu cucumber-runner:run```
+- Reports will be generated in the following path: target/cucumber/combined-html/cucumber-html-report/overview-features.html
 
 #### SONAR Analysis
 - Make sure the following settings are in the settings.xml file in .m2 folder

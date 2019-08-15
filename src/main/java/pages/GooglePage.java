@@ -2,6 +2,7 @@ package pages;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import javax.inject.Named;
 import java.util.logging.Logger;
@@ -23,6 +24,14 @@ public class GooglePage {
         LOG.info("\n ********** Opening ad Navigating to the Google PAGE");
         driver.get().navigate().to("http://www.google.com");
         Thread.sleep(10000L);
+        driver.get().quit();
+        LOG.info("\n ********** Quitting the Driver");
+    }
+
+    public void navigateAndPerformNegativeTest() {
+        LOG.info("\n ********** Opening ad Navigating to the Google PAGE");
+        driver.get().navigate().to("http://www.google.com");
+        driver.get().findElement(By.id("unknown")).click();
         driver.get().quit();
         LOG.info("\n ********** Quitting the Driver");
     }
