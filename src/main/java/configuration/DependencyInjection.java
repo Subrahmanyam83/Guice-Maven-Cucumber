@@ -17,6 +17,7 @@ public class DependencyInjection extends AbstractModule implements InjectorSourc
     public void configure() {
         bind(WebDriver.class).toProvider(ChromeDriverFactory.class).in(ScenarioScoped.class);
         bind(WebDriver.class).annotatedWith(Names.named("firefox")).toProvider(FirefoxDriverFactory.class).in(ScenarioScoped.class);
+        bind(String.class).toProvider(StringFactory.class);
     }
 
     /*

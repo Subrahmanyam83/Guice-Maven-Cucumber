@@ -2,6 +2,7 @@ package pages;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import javax.inject.Named;
@@ -20,7 +21,12 @@ public class GooglePage {
     @Inject @Named("firefox")
     private Provider<WebDriver> driver1;
 
+    @Inject
+    private String abc;
+
+    @Test
     public void navigate() throws InterruptedException {
+
         LOG.info("\n ********** Opening ad Navigating to the Google PAGE");
         driver.get().navigate().to("http://www.google.com");
         Thread.sleep(10000L);
